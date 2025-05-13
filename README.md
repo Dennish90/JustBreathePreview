@@ -91,7 +91,7 @@ Here's a basic example of how the app determines which audio cue to play during 
 The current background music was generated using **Suno** during a paid subscription —  
 but future ambient soundscapes (like forest sounds and meditative loops) will be recorded and crafted by me.
 
-[▶️ Listen to a short ambient demo](media/audio/sacred_rhythms_preview.mp3)
+[▶️ Listen to a short ambient demo](media/sacred_rhythms_preview.mp3)
 
 ## 🗺️ Roadmap & Progress
 
