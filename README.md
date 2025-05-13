@@ -66,23 +66,32 @@ Here's a basic example of how the app determines which audio cue to play during 
     }
   }
 
-  // Plays a guided audio cue for the given phase, 
-  // matching the duration to the closest available audio file.
-  // If the duration doesn't match exactly, the closest file is used 
-  // and playback is trimmed if needed.
-  Future<void> _playGuidedSound(String phaseName, double seconds) async {
-    if (!ExerciseSetupManager.isGuidedEnabled) return;
+// Plays a guided audio cue for the given phase,
+// choosing the closest available audio file that does not exceed the desired duration.
+// File names follow the pattern: sounds/inhale_3_5s.mp3 (i.e. 3.5 seconds)
 
-    final durations = [2, 4, 6, 8];
-    final closest = durations.reduce((a, b) => (a - seconds).abs() < (b - seconds).abs() ? a : b);
-    final soundPath = 'sounds/${phaseName}_${closest}s.mp3';
+Future<void> _playGuidedSound(String phaseName, double seconds) async {
+  if (!ExerciseSetupManager.isGuidedEnabled) return;
 
-    try {
-      await breathAudioPlayer.play(AssetSource(soundPath), volume: ExerciseSetupManager.guidedVolume);
-    } catch (e) {
-      debugPrint('Failed to play guided sound: $e');
-    }
+  // All available durations in 0.5s steps
+  final durations = List.generate(16, (i) => 0.5 + i * 0.5); // [0.5, 1.0, ..., 8.0]
+
+  // Find the closest duration less than or equal to the requested length
+  final suitable = durations.where((d) => d <= seconds).toList();
+  final selected = suitable.isNotEmpty ? suitable.last : durations.first;
+
+  final durationLabel = selected.toStringAsFixed(1).replaceAll('.', '_');
+  final soundPath = 'sounds/${phaseName}_${durationLabel}s.mp3';
+
+  try {
+    await breathAudioPlayer.play(
+      AssetSource(soundPath),
+      volume: ExerciseSetupManager.guidedVolume,
+    );
+  } catch (e) {
+    debugPrint('Failed to play guided sound: $e');
   }
+}
 ```
 ---
 
@@ -91,7 +100,7 @@ Here's a basic example of how the app determines which audio cue to play during 
 The current background music was generated using **Suno** during a paid subscription —  
 but future ambient soundscapes (like forest sounds and meditative loops) will be recorded and crafted by me.
 
-[▶️ Listen to a short ambient demo](media/sacred_rhythms_preview.mp3)
+▶️ [Listen to a short ambient demo](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
 
 ## 🗺️ Roadmap & Progress
 
