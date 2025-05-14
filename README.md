@@ -262,7 +262,7 @@ men framtida ljudlandskap (t.ex. skogsljud och meditativa loopar) kommer att spe
 
 ---
 
-## 🗺️ Plan & Framsteg
+## Plan & Framsteg
 
 En snabb översikt över vad som redan är byggt och vad som är på gång.  
 Appen är inte bara funktionell – den är designad för flexibilitet, modularitet och för att kunna anpassas efter individens behov.
