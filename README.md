@@ -13,7 +13,7 @@ As someone focused on becoming better at fullstack development, I wanted to expl
 
 But more than that, I was tired of switching between multiple apps just to get the breathing exercises I wanted.  
 Most existing apps are too rigid. They don't let you **tweak the flow**, **adjust the rhythm**, or **finetune the transitions**.  
-We're all different — we have different lungs, different needs, and different definitions of calm.  
+We're all different. We have different lungs, different needs, and different definitions of calm.  
 So I started developing **Just Breathe** to solve that for myself.
 
 ---
