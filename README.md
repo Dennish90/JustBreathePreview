@@ -1,4 +1,4 @@
-[ENG](#JustBreathe–Showcase(ENG)) | [SV](JustBreathe–Showcase(SV))
+[ENG](#just-breathe--showcase-eng) | [SV](#just-breathe-–showcase-sv)
 
 # Just Breathe – Showcase (ENG)
 
