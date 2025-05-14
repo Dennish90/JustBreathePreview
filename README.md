@@ -49,7 +49,7 @@ guided breathing voice cues, start countdown, and more.
 
 ##  Under the Hood
 
-Here's a basic example of how the app determines which audio cue to play during a session:
+Here's a basic example of how the app determines which breathing audio cue to play during a session:
 
 ```dart
   // Returns the duration (in seconds) for the current breathing phase, 
@@ -184,7 +184,7 @@ Så jag började utveckla **Just Breathe** för att lösa det – först och fr�
 ## Anpassa Allt
 
 Välj bland förinställda andningslägen eller skapa egna:
-- Sätt inandning-, håll- och utandning-tider
+- Sätt inandnings-, håll- och utandningstider
 - Definiera antal repetitioner och valfri andningsretention
 - Aktivera bakgrundsmusik
 - Slå på guidande ljud eller minutmarkörer
@@ -204,9 +204,9 @@ guidad andning, nedräkning innan start med mera.
 
 ---
 
-## Under Huvan
+## Under Huven
 
-Här är ett grundexempel på hur appen bestämmer vilket ljudklipp som ska spelas under en session:
+Här är ett grundexempel på hur appen bestämmer vilket andningsljud som ska spelas under en session:
 
 ```dart
   // Returns the duration (in seconds) for the current breathing phase, 
