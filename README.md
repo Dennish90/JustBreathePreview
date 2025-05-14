@@ -9,7 +9,7 @@
 ## Why I'm building this
 
 I was curious to dive deeper into frontend development and understand how to build an actual app from the ground up.
-As someone focused on becoming better at fullstack development, I wanted to explore the mobile side of things — including animations, audio handling, state management, and responsive UI.
+As someone focused on becoming better at fullstack development, I wanted to explore the mobile side of things. Including animations, audio handling, state management, and responsive UI.
 
 But more than that, I was tired of switching between multiple apps just to get the breathing exercises I wanted.  
 Most existing apps are too rigid. They don't let you **tweak the flow**, **adjust the rhythm**, or **finetune the transitions**.  
@@ -29,7 +29,7 @@ So I started developing **Just Breathe** to solve that for myself.
 Choose from built-in breathing modes or create your own:
 - Set inhale/hold/exhale durations
 - Define number of reps and optional breath retention
-- Enable "Sacred Rhythms" (background music)
+- Enable background music
 - Turn on guided voice cues or minute markers
 
 ### Menus & Setup
@@ -102,7 +102,7 @@ Future<void> _playGuidedSound(String phaseName, double seconds) async {
 The current background music was generated using **Suno** during a paid subscription —  
 but future ambient soundscapes (like forest sounds and meditative loops) will be recorded and crafted by me.
 
-▶️ [Listen to a short ambient demo](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
+▶️ [Listen to a short song demo](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
 
 ## 🗺️ Roadmap & Progress
 
@@ -258,14 +258,14 @@ Future<void> _playGuidedSound(String phaseName, double seconds) async {
 Den nuvarande bakgrundsmusiken genererades med **Suno** under ett aktivt abonnemang —  
 men framtida ljudlandskap (t.ex. skogsljud och meditativa loopar) kommer att spelas in och produceras av mig själv.
 
-▶️ [Lyssna på ett kort ambient-klipp](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
+▶️ [Lyssna på en kort låt-demo](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
 
 ---
 
 ## Plan & Framsteg
 
-En snabb översikt över vad som redan är byggt och vad som är på gång.  
-Appen är inte bara funktionell – den är designad för flexibilitet, modularitet och för att kunna anpassas efter individens behov.
+En snabb översikt över vad som redan är byggt och vad som är på gång.
+Appen är inte bara funktionell, den är designad för flexibilitet, modularitet och för att kunna anpassas efter individens behov.
 
 ---
 
