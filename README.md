@@ -1,4 +1,6 @@
-# Just Breathe – Showcase
+[ENG](#JustBreathe–Showcase(ENG)) | [SV](JustBreathe–Showcase(SV))
+
+# Just Breathe – Showcase (ENG)
 
 > A custom breathing exercise app built from scratch using Flutter
 
@@ -152,3 +154,161 @@ This app isn't just functional – it’s designed with flexibility, modularity 
 ---
 
 > All of this is being built modularly. The goal isn’t just “another breathing app” — it’s a flexible breathing platform where the user is in control.
+
+---
+
+# Just Breathe – Showcase (SV)
+
+> En skräddarsydd app för andningsövningar, byggd från grunden i Flutter
+
+---
+
+## Varför jag bygger det här
+
+Jag ville fördjupa mig inom frontendutveckling och förstå hur man bygger en faktisk app från grunden.  
+Eftersom jag strävar efter att bli bättre på fullstack ville jag även utforska mobila gränssnitt – inklusive animationer, ljudhantering, tillståndshantering och responsiv UI.
+
+Men ännu viktigare: jag tröttnade på att behöva växla mellan flera appar för att få till de andningsövningar jag ville ha.  
+De flesta befintliga appar är för stela. De låter dig inte **justera flödet**, **anpassa rytmen** eller **fintrimma övergångarna**.  
+Vi är alla olika. Vi har olika lungor, olika behov och olika definitioner av lugn.  
+Så jag började utveckla **Just Breathe** för att lösa det – först och främst för mig själv.
+
+---
+
+## Demoklipp
+
+![Andningsdemo](media/app_demo.gif)
+
+---
+
+## Anpassa Allt
+
+Välj bland förinställda andningslägen eller skapa egna:
+- Sätt inandning-, håll- och utandning-tider
+- Definiera antal repetitioner och valfri andningsretention
+- Aktivera bakgrundsmusik
+- Slå på guidande ljud eller minutmarkörer
+
+### Menyer & Inställningar
+
+<p align="center">
+  <img src="media/exercise_menu.png" width="240" />
+  <img src="media/exercise_setup.png" width="240" />
+</p>
+
+Till vänster: **Övningsmenyn**, där alla andningsövningar listas.  
+Varje övning laddas in i animationen och förhandsvisar sitt flöde visuellt.
+
+Till höger: **Övningsinställningar**, där användaren kan slå på eller av bakgrundsljud,  
+guidad andning, nedräkning innan start med mera.
+
+---
+
+## Under Huvan
+
+Här är ett grundexempel på hur appen bestämmer vilket ljudklipp som ska spelas under en session:
+
+```dart
+  // Returns the duration (in seconds) for the current breathing phase, 
+  // based on the selected exercise settings.
+  double _getDurationForPhase(BreathingPhase phase) {
+    final ex = widget.exercise;
+    switch (phase) {
+      case BreathingPhase.inhale:
+        return ex.secIn;
+      case BreathingPhase.holdIn:
+        return ex.secInHold;
+      case BreathingPhase.exhale:
+        return ex.secOut;
+      case BreathingPhase.holdOut:
+        return ex.secOutHold;
+    }
+  }
+
+// Plays a guided audio cue for the given phase,
+// choosing the closest available audio file that does not exceed the desired duration.
+// File names follow the pattern: sounds/inhale_3_5s.mp3 (i.e. 3.5 seconds)
+
+Future<void> _playGuidedSound(String phaseName, double seconds) async {
+  if (!ExerciseSetupManager.isGuidedEnabled) return;
+
+  // All available durations in 0.5s steps
+  final durations = List.generate(16, (i) => 0.5 + i * 0.5); // [0.5, 1.0, ..., 8.0]
+
+  // Find the closest duration less than or equal to the requested length
+  final suitable = durations.where((d) => d <= seconds).toList();
+  final selected = suitable.isNotEmpty ? suitable.last : durations.first;
+
+  final durationLabel = selected.toStringAsFixed(1).replaceAll('.', '_');
+  final soundPath = 'sounds/${phaseName}_${durationLabel}s.mp3';
+
+  try {
+    await breathAudioPlayer.play(
+      AssetSource(soundPath),
+      volume: ExerciseSetupManager.guidedVolume,
+    );
+  } catch (e) {
+    debugPrint('Failed to play guided sound: $e');
+  }
+}
+```
+
+## Musik
+
+Den nuvarande bakgrundsmusiken genererades med **Suno** under ett aktivt abonnemang —  
+men framtida ljudlandskap (t.ex. skogsljud och meditativa loopar) kommer att spelas in och produceras av mig själv.
+
+▶️ [Lyssna på ett kort ambient-klipp](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
+
+---
+
+## 🗺️ Plan & Framsteg
+
+En snabb översikt över vad som redan är byggt och vad som är på gång.  
+Appen är inte bara funktionell – den är designad för flexibilitet, modularitet och för att kunna anpassas efter individens behov.
+
+---
+
+### Färdiga funktioner
+
+- [x] **Animerad andningscirkel**  
+  Mjuk och skalbar animation – fungerar både i små och helskärmsformat.
+
+- [x] **Förinstallerade andningsövningar**  
+  Övningar definieras som data (inte hårdkodat). Lätt att lägga till och justera.
+
+- [x] **Dynamisk ljudmatchning**  
+  Guidad andning anpassar sig automatiskt efter fasens längd (2–8 sek) och justerar volymen.
+
+- [x] **Inställningsbara funktioner i setup-menyn**  
+  - Slå på/av musik  
+  - Aktivera röststyrd guidning  
+  - Minutmarkörer  
+  - Andningsretention
+
+- [x] **Återanvändbara komponenter**  
+  Sliders, växlare och valmenyer som fungerar för både fasta övningar och framtida anpassade rutiner.
+
+---
+
+### Pågående / Kommande funktioner
+
+- [ ] **Egen övningsbyggare**  
+  Möjlighet att skapa egna andningssekvenser. Backend är redan klart – UI kommer härnäst.
+
+- [ ] **Loop-inställningar & visuell feedback**  
+  Visa antal andetag kvar, repetitioner i realtid och synkad animation.
+
+- [ ] **Egen musikproduktion & mastering**  
+  Skapa fler bakgrundsspår för olika stämningar och känslolägen.  
+  Polera ljudkvalitet med mixning och mastering.
+
+- [ ] **Teman & visuella inställningar**  
+  Fler färglägen än bara mörkt. Möjlighet att välja tema utifrån smak och tillfälle.
+
+- [ ] **Statistik & historik**  
+  Logga dina sessioner, total tid och framsteg över tid.
+
+---
+
+> Allt byggs modulärt. Målet är inte bara “ännu en andningsapp”, utan en flexibel andningsplattform där användaren har full kontroll.
