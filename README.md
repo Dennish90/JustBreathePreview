@@ -104,7 +104,7 @@ but future ambient soundscapes (like forest sounds and meditative loops) will be
 
 ▶️ [Listen to a short song demo](https://www.dropbox.com/scl/fi/vv7khpsgdc3gjlvpsnxso/sacred_rhythms_preview.mp3?rlkey=5nynnhx32vhz6lwfmt6ndunzo&st=37ymugq2&raw=1)
 
-## 🗺️ Roadmap & Progress
+## Roadmap & Progress
 
 A quick overview of what’s been built and what’s coming.  
 This app isn't just functional – it’s designed with flexibility, modularity and user individuality in mind.
