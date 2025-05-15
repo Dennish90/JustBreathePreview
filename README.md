@@ -206,7 +206,7 @@ guidad andning, nedräkning innan start med mera.
 
 ## Under Huven
 
-Här är ett grundexempel på hur appen bestämmer vilket andningsljud som ska spelas under en session:
+Här är ett exempel på hur appen bestämmer vilket andningsljud som ska spelas under en session:
 
 ```dart
   // Returns the duration (in seconds) for the current breathing phase, 
